@@ -1,7 +1,9 @@
 GoogleProgressBar
 ===============
 
-Android library to display progress like google does in some of his services.
+Android library fot the google circles ProgressBar.
+
+![GoogleProgressBar][1]
 
 ####On progress...
 
@@ -38,3 +40,5 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[1]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
