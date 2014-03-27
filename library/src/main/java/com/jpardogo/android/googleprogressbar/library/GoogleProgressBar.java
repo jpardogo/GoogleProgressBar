@@ -128,7 +128,7 @@ public class GoogleProgressBar extends ProgressBar {
                 break;
             case NEXUS_CIRCLES:
                 //http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif
-                //TODO: Nexus 5 circles boot progress animation
+                //TODO: Nexus 5 circles boot progress animation (Just the circles bouncing)
                 break;
             case NEXUS_CROSS:
                 //http://devfest.gdgthess.org/wp-content/uploads/2013/11/nexus-4-boot-animation.gif
@@ -136,7 +136,7 @@ public class GoogleProgressBar extends ProgressBar {
                 break;
             case NEXUS_ROATION_CROSS:
                 //http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif
-                //TODO: Nexus one rotation cross animation
+                //TODO: Nexus one rotation cross animation (Just the cross rotation)
                 break;
         }
         super.onDraw(canvas);

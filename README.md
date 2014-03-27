@@ -1,9 +1,13 @@
 GoogleProgressBar
 ===============
 
-Android library for the google circles ProgressBar.
+Android library to display different kind of google related animations for the progressBar.
+
+Only one animation have been finished so far:
 
 ![GoogleProgressBar][1]
+
+[Here][2] are the list of animations left. Feel free to add your own ones or implement the ones left.
 
 Developed By
 --------------------
@@ -40,3 +44,4 @@ License
     limitations under the License.
 
 [1]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
+[2]: https://github.com/jpardogo/GoogleProgressBar/blob/master/library/src/main/java/com/jpardogo/android/googleprogressbar/library/GoogleProgressBar.java#L129
