@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GoogleProgressBar">
+        <attr name="progressType" format="enum">
+            <enum name="circles" value="0"/>
+        </attr>
+    </declare-styleable>
+</resources>
