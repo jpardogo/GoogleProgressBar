@@ -1,11 +1,9 @@
 GoogleProgressBar
 ===============
 
-Android library fot the google circles ProgressBar.
+Android library for the google circles ProgressBar.
 
 ![GoogleProgressBar][1]
-
-####On progress...
 
 Developed By
 --------------------
