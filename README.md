@@ -3,14 +3,46 @@ GoogleProgressBar
 
 Android library to display different kind of google related animations for the progressBar.
 
-Only one animation have been finished so far:
+Only one animation has been finished so far:
 
 ![GoogleProgressBar][1]
 
-[Here][2] are the list of animations left. Feel free to add your own ones or implement the ones left.
+TODO
+----
+
+ * [NEXUS_CIRCLES](http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif):
+
+    Nexus 5 circles boot progress animation (Just the circles bouncing)
+
+ * [NEXUS_CROSS](http://devfest.gdgthess.org/wp-content/uploads/2013/11/nexus-4-boot-animation.gif):
+
+    Galaxy nexus shinny cross boot animation
+
+ * [NEXUS_ROATION_CROSS](http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif):
+
+    Nexus one rotation cross animation (Just the cross rotation)
+
+Usage
+-----
+
+Add to your layout the following view, replacing "<your_list_option>" for the one you want of the list below:
+
+```xml
+    <com.jpardogo.android.googleprogressbar.library.<your_list_option>
+            android:id="@+id/google_progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"/>
+```
+
+`<your_list_option>` can be replace for:
+
+* FoldingCirclesProgressBar
+
+The more custom progressBar finished, the more options in this list.
 
 Developed By
---------------------
+------------
 
 Javier Pardo de Santayana Gómez - <jpardogo@gmail.com>
 
