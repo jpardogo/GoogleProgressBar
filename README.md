@@ -13,7 +13,7 @@ TODO
 ----
 
 
- I would love to receive your pull requests to create any of following animations or others that you think fit on this lib:
+ I would love to receive your pull requests to create any of the following animations or others that you think fit on this library:
 
  * [NEXUS_CIRCLES](http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif):
 
