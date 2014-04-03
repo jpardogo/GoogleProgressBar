@@ -3,12 +3,17 @@ GoogleProgressBar
 
 Android library to display different kind of google related animations for the progressBar.
 
-Only one animation has been finished so far:
+Only this animation has been finished so far:
 
-![GoogleProgressBar][1]
+![FoldingCirclesProgressBar][1]
+
+  FoldingCirclesProgressBar
 
 TODO
 ----
+
+
+ I would love to receive your pull requests to create any of following animations or others that you think fit on this lib:
 
  * [NEXUS_CIRCLES](http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif):
 
@@ -25,21 +30,21 @@ TODO
 Usage
 -----
 
-Add to your layout the following view, replacing "<your_list_option>" for the one you want of the list below:
+Add to your layout the following view, replacing "your_list_option" for the one you want of the list below:
 
 ```xml
-    <com.jpardogo.android.googleprogressbar.library.<your_list_option>
+    <com.jpardogo.android.googleprogressbar.library.your_list_option
             android:id="@+id/google_progress"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"/>
 ```
 
-`<your_list_option>` can be replace for:
+`your_list_option` can be replace for:
 
 * FoldingCirclesProgressBar
 
-The more custom progressBar finished, the more options in this list.
+The more custom `ProgressBar` finished, the more options in this list.
 
 Developed By
 ------------
