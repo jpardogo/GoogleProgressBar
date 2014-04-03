@@ -1,14 +1,13 @@
 package com.jpardogo.android.googleprogressbar;
 
 import android.app.ListActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import com.jpardogo.android.googleprogressbar.library.GoogleProgressBar;
+import com.jpardogo.android.googleprogressbar.library.FoldingCirclesProgressBar;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class MainActivity extends ListActivity {
 
     private int LIST_ITEM_COUNT=40;
     @InjectView(R.id.google_progress)
-    GoogleProgressBar mProgressBar;
+    FoldingCirclesProgressBar mProgressBar;
     private boolean isRefreshing=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,16 +1,14 @@
 package com.jpardogo.android.googleprogressbar.library;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.*;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
-public class GoogleProgressBar extends ProgressBar {
+public class FoldingCirclesProgressBar extends ProgressBar {
     private static final int FOLDED_TRANSPARENCY = 235;
     private static final int OPAQUE = 255;
-    private int mProgressType;
     private int mY = Integer.MAX_VALUE;
     private int mX = Integer.MAX_VALUE;
     private Paint mPaint;
@@ -34,6 +32,7 @@ public class GoogleProgressBar extends ProgressBar {
         NEXUS_CROSS,
         NEXUS_ROATION_CROSS;
     }
+
     private enum ProgressColors {
         RED("#C93437"),
         BLUE("#375BF1"),
@@ -61,34 +60,24 @@ public class GoogleProgressBar extends ProgressBar {
         NOT_FOLDING;
     }
 
-    public GoogleProgressBar(Context context) {
+    public FoldingCirclesProgressBar(Context context) {
         super(context);
         init(context);
     }
 
-    public GoogleProgressBar(Context context, AttributeSet attrs) {
+    public FoldingCirclesProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs,R.styleable.GoogleProgressBar,0, 0);
-        try {
-            mProgressType = a.getInt(R.styleable.GoogleProgressBar_progressType, 0);
-        } finally {
-            a.recycle();
-        }
         init(context);
     }
 
-    public GoogleProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FoldingCirclesProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     private void init(Context context) {
         setIndeterminateDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-        switch (ProgressTypes.values()[mProgressType]) {
-            case CIRCLES:
-                initCirclesProgress();
-                break;
-        }
+        initCirclesProgress();
     }
 
     private void initCirclesProgress() {
@@ -104,11 +93,7 @@ public class GoogleProgressBar extends ProgressBar {
     @Override
     protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        switch (ProgressTypes.values()[mProgressType]) {
-            case CIRCLES:
-                measureCircleProgress();
-                break;
-        }
+        measureCircleProgress();
     }
 
     private void measureCircleProgress() {
@@ -122,23 +107,7 @@ public class GoogleProgressBar extends ProgressBar {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        switch (ProgressTypes.values()[mProgressType]){
-            case CIRCLES:
-                makeCirclesProgress(canvas);
-                break;
-            case NEXUS_CIRCLES:
-                //http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif
-                //TODO: Nexus 5 circles boot progress animation (Just the circles bouncing)
-                break;
-            case NEXUS_CROSS:
-                //http://devfest.gdgthess.org/wp-content/uploads/2013/11/nexus-4-boot-animation.gif
-                //TODO: Galaxy nexus shinny cross boot animation
-                break;
-            case NEXUS_ROATION_CROSS:
-                //http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif
-                //TODO: Nexus one rotation cross animation (Just the cross rotation)
-                break;
-        }
+        makeCirclesProgress(canvas);
         super.onDraw(canvas);
     }
 
@@ -146,12 +115,12 @@ public class GoogleProgressBar extends ProgressBar {
         if (mCurrentState == ProgressStates.NOT_FOLDING) {
             notFold(canvas);
         } else if (mCurrentState == ProgressStates.FOLDING_DOWN) {
-            mY = foldingToMaximun(mY,ProgressStates.FOLDING_DOWN,Color.parseColor(ProgressColors.RED.toString()));
+            mY = foldingToMaximun(mY, ProgressStates.FOLDING_DOWN, Color.parseColor(ProgressColors.RED.toString()));
             drawYMotion(canvas);
         } else if (mCurrentState == ProgressStates.FOLDING_RIGHT) {
-            mX = foldingToMaximun(mX,ProgressStates.FOLDING_RIGHT,Color.parseColor(ProgressColors.BLUE.toString()));
+            mX = foldingToMaximun(mX, ProgressStates.FOLDING_RIGHT, Color.parseColor(ProgressColors.BLUE.toString()));
             drawXMotion(canvas);
-        }else if (mCurrentState == ProgressStates.FOLDING_UP) {
+        } else if (mCurrentState == ProgressStates.FOLDING_UP) {
             mY = foldingToMinimun(mY, ProgressStates.FOLDING_UP, Color.parseColor(ProgressColors.GREEN.toString()));
             drawYMotion(canvas);
         } else if (mCurrentState == ProgressStates.FOLDING_LEFT) {
@@ -189,7 +158,7 @@ public class GoogleProgressBar extends ProgressBar {
     private int foldingToMaximun(int axisValue, ProgressStates lastState, int nextColor) {
         //Start
         if (axisValue <= mControlPointMinimun) {
-            axisValue=mControlPointMinimun;
+            axisValue = mControlPointMinimun;
             mPaint3.setAlpha(FOLDED_TRANSPARENCY);
         }
 
@@ -208,7 +177,7 @@ public class GoogleProgressBar extends ProgressBar {
 
         }
 
-        return axisValue+mSpeed;
+        return axisValue + mSpeed;
     }
 
     private int foldingToMinimun(int axisValue, ProgressStates lastState, int nextColor) {
