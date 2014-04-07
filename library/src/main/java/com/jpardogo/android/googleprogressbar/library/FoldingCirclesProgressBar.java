@@ -82,11 +82,15 @@ public class FoldingCirclesProgressBar extends ProgressBar {
 
     private void initCirclesProgress() {
         mPath = new Path();
-        mPaint = new Paint();
+
+        Paint basePaint = new Paint();
+        basePaint.setAntiAlias(true);
+
+        mPaint = new Paint(basePaint);
         mPaint.setColor(Color.parseColor(ProgressColors.RED.toString()));
-        mPaint2 = new Paint();
+        mPaint2 = new Paint(basePaint);
         mPaint2.setColor(Color.parseColor(ProgressColors.BLUE.toString()));
-        mPaint3 = new Paint();
+        mPaint3 = new Paint(basePaint);
         mPaint3.setColor(Color.parseColor(ProgressColors.BLUE.toString()));
     }
 
