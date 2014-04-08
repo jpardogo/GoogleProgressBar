@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.jpardogo.android.googleprogressbar.MainActivity">
 
-    <com.jpardogo.android.googleprogressbar.library.FoldingCirclesProgressBar
+    <ProgressBar
         android:id="@+id/google_progress"
         android:layout_width="50dp"
         android:layout_height="50dp"

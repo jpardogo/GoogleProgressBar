@@ -6,8 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 
-import com.jpardogo.android.googleprogressbar.library.FoldingCirclesProgressBar;
+import com.jpardogo.android.googleprogressbar.library.FoldingCirclesDrawable;
 
 import java.util.ArrayList;
 
@@ -19,13 +20,16 @@ public class MainActivity extends ListActivity {
 
     private int LIST_ITEM_COUNT=40;
     @InjectView(R.id.google_progress)
-    FoldingCirclesProgressBar mProgressBar;
+    ProgressBar mProgressBar;
     private boolean isRefreshing=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+
+        mProgressBar.setIndeterminateDrawable(new FoldingCirclesDrawable());
+
         refresh();
 
     }
