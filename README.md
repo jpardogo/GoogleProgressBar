@@ -15,6 +15,10 @@ TODO
 
  I would love to receive your pull requests to create any of the following animations or others that you think fit on this library:
 
+ * [GOOGLE_MUSIC_DICES](https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif)
+
+   Dices I'm feeling lucky progress of google music app.
+
  * [NEXUS_CIRCLES](http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif):
 
     Nexus 5 circles boot progress animation (Just the circles bouncing)
@@ -26,10 +30,6 @@ TODO
  * [NEXUS_ROATION_CROSS](http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif):
 
     Nexus one rotation cross animation (Just the cross rotation)
-
- * GOOGLE_MUSIC_DICES
-
-   Dices I'm feeling lucky progress of google music app.
 
 Usage
 -----
