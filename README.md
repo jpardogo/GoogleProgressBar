@@ -27,24 +27,43 @@ TODO
 
     Nexus one rotation cross animation (Just the cross rotation)
 
+ * GOOGLE_MUSIC_DICES
+
+   Dices I'm feeling lucky progress of google music app.
+
 Usage
 -----
 
-Add to your layout the following view, replacing "your_list_option" for the one you want of the list below:
+Add to your ProgressBar on the xml layout:
 
 ```xml
-    <com.jpardogo.android.googleprogressbar.library.your_list_option
+     <ProgressBar
             android:id="@+id/google_progress"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"/>
 ```
 
-`your_list_option` can be replace for:
+The animation speed can be modified easily with `android:indeterminateDuration`.
 
-* FoldingCirclesProgressBar
+You also need to set in you code the drawable you want to use from the list:
 
-The more custom `ProgressBar` finished, the more options in this list.
+```java
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
+        mProgressBar.setIndeterminateDrawable(new you_list_option());
+        //...
+    }
+```
+
+`you_list_option` can be replace for:
+
+* FoldingCirclesDrawable
+
+The more custom `Drawables` finished, the more options in this list.
 
 Developed By
 ------------
