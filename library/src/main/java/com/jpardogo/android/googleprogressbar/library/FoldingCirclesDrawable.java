@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,8 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     private static final float MAX_LEVEL = 10000;
     private static final float CIRCLE_COUNT = ProgressStates.values().length;
     private static final float MAX_LEVEL_PER_CIRCLE = MAX_LEVEL / CIRCLE_COUNT;
+    private static final int ALPHA_OPAQUE = 255;
+    private static final int ALPHA_OVERLAY_DEFAULT = 235;
 
     private Paint mFstHalfPaint;
     private Paint mScndHalfPaint;
@@ -31,6 +34,8 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     private int mControlPointMinimum;
     private int mControlPointMaximum;
     private int mAxisValue;
+    private int mAlpha = ALPHA_OPAQUE;
+    private ColorFilter mColorFilter;
 
     private enum ProgressColors {
 
@@ -77,6 +82,10 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         mFstHalfPaint = new Paint(basePaint);
         mScndHalfPaint = new Paint(basePaint);
         mAbovePaint = new Paint(basePaint);
+
+        // init alpha and color filter
+        setAlpha(mAlpha);
+        setColorFilter(mColorFilter);
     }
 
     @Override
@@ -116,7 +125,9 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
             mAbovePaint.setColor(mFstHalfPaint.getColor());
         }
 
-        mAbovePaint.setAlpha(235);
+        // invalidate alpha (Paint#setAlpha is a shortcut for setColor(alpha part)
+        // so alpha is affected by setColor())
+        setAlpha(mAlpha);
 
         // axis
         mAxisValue = (int) (mControlPointMinimum + (mControlPointMaximum - mControlPointMinimum) * (levelForCircle / MAX_LEVEL_PER_CIRCLE));
@@ -173,15 +184,25 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
 
     @Override
     public void setAlpha(int alpha) {
+        this.mAlpha = alpha;
+
+        mFstHalfPaint.setAlpha(alpha);
+        mScndHalfPaint.setAlpha(alpha);
+        mAbovePaint.setAlpha(Math.min(mAlpha, ALPHA_OVERLAY_DEFAULT));
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
+        this.mColorFilter = cf;
+
+        mFstHalfPaint.setColorFilter(cf);
+        mScndHalfPaint.setColorFilter(cf);
+        mAbovePaint.setColorFilter(cf);
     }
 
     @Override
     public int getOpacity() {
-        return 0;
+        return PixelFormat.TRANSLUCENT;
     }
 
     @Override
