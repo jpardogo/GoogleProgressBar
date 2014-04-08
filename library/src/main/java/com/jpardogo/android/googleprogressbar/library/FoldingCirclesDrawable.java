@@ -21,7 +21,7 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     private static final float CIRCLE_COUNT = ProgressStates.values().length;
     private static final float MAX_LEVEL_PER_CIRCLE = MAX_LEVEL / CIRCLE_COUNT;
     private static final int ALPHA_OPAQUE = 255;
-    private static final int ALPHA_OVERLAY_DEFAULT = 235;
+    private static final int ALPHA_ABOVE_DEFAULT = 235;
 
     private Paint mFstHalfPaint;
     private Paint mScndHalfPaint;
@@ -188,7 +188,9 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
 
         mFstHalfPaint.setAlpha(alpha);
         mScndHalfPaint.setAlpha(alpha);
-        mAbovePaint.setAlpha(Math.min(mAlpha, ALPHA_OVERLAY_DEFAULT));
+
+        int targetAboveAlpha = (ALPHA_ABOVE_DEFAULT * alpha) / ALPHA_OPAQUE;
+        mAbovePaint.setAlpha(targetAboveAlpha);
     }
 
     @Override
