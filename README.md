@@ -65,6 +65,17 @@ You also need to set in you code the drawable you want to use from the list:
 
 The more custom `Drawables` finished, the more options in this list.
 
+Including in your project
+-------------------------
+
+You can either add the library to your application as a library project or add the following dependency to your build.gradle:
+
+```groovy
+dependencies {
+    compile 'com.jpardogo.googleprogressbar:library:(latest version)'
+}
+```
+
 Developed By
 ------------
 
