@@ -1,14 +1,24 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    xmlns:gpb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jpardogo.android.googleprogressbar.MainActivity">
 
-    <ProgressBar
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
         android:id="@+id/google_progress"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        gpb:type="folding_circles"/>
+
+    <!--If we add the google progress dynamically we use a native ProgressBar-->
+    <!--<ProgressBar-->
+        <!--android:id="@+id/google_progress"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_gravity="center"/>-->
 
     <ListView
         android:paddingLeft="@dimen/activity_horizontal_margin"
