@@ -1,5 +1,6 @@
 package com.jpardogo.android.googleprogressbar.library;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -228,6 +229,21 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         final Callback callback = getCallback();
         if (callback != null) {
             callback.unscheduleDrawable(this, what);
+        }
+    }
+
+    public static class Builder {
+
+        public Builder(Context context){
+            initDefaults(context);
+        }
+
+        private void initDefaults(Context context) {
+            //Default values
+        }
+
+        public Drawable build() {
+            return new FoldingCirclesDrawable();
         }
     }
 }
