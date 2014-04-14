@@ -17,6 +17,7 @@ import butterknife.InjectView;
 
 public class MainActivity extends ListActivity {
 
+    private static final long REFRESH_TIME = 4000;
     private int LIST_ITEM_COUNT=40;
     @InjectView(R.id.google_progress)
     GoogleProgressBar mProgressBar;
@@ -30,7 +31,9 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         /**Dynamically*/
-//        mProgressBar.setIndeterminateDrawable(new FoldingCirclesDrawable.Builder(this).build());
+//        mProgressBar.setIndeterminateDrawable(new FoldingCirclesDrawable.Builder(this)
+//                .colors(getResources().getIntArray(R.array.rainbow))
+//                .build());
         refresh();
 
     }
@@ -48,7 +51,7 @@ public class MainActivity extends ListActivity {
                 setListAdapter(new ArrayAdapter<String>(getBaseContext(), R.layout.item_list, getListItem()));
 
             }
-        },4000);
+        },REFRESH_TIME);
     }
 
     private ArrayList<String> getListItem() {

@@ -4,5 +4,6 @@
         <attr name="type" format="enum">
             <enum name="folding_circles" value="0" />
         </attr>
+        <attr name="colors" format="reference"/>
     </declare-styleable>
 </resources>

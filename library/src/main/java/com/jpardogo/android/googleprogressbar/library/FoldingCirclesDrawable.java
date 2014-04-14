@@ -37,44 +37,26 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     private int mAxisValue;
     private int mAlpha = ALPHA_OPAQUE;
     private ColorFilter mColorFilter;
-
-    private enum ProgressColors {
-
-        RED(0xFFC93437),
-        BLUE(0xFF375BF1),
-        YELLOW(0xFFF7D23E),
-        GREEN(0xFF34A350);
-
-        private int color;
-
-        private ProgressColors(final int color) {
-            this.color = color;
-        }
-    }
-
+    private static int mColor1;
+    private static int mColor2;
+    private static int mColor3;
+    private static int mColor4;
+    private int fstColor, scndColor;
+    private boolean goesBackward;
 
     private enum ProgressStates {
-
-        FOLDING_DOWN(ProgressColors.RED, ProgressColors.BLUE, false),
-        FOLDING_LEFT(ProgressColors.RED, ProgressColors.YELLOW, true),
-        FOLDING_UP(ProgressColors.YELLOW, ProgressColors.GREEN, true),
-        FOLDING_RIGHT(ProgressColors.BLUE, ProgressColors.GREEN, false);
-
-        private ProgressColors fstColor, scndColor;
-        private boolean goesBackward;
-
-        ProgressStates(ProgressColors fstColor, ProgressColors scndColor, boolean goesBackward) {
-            this.fstColor = fstColor;
-            this.scndColor = scndColor;
-            this.goesBackward = goesBackward;
-        }
+        FOLDING_DOWN,
+        FOLDING_LEFT,
+        FOLDING_UP,
+        FOLDING_RIGHT
     }
 
-    public FoldingCirclesDrawable() {
-        initCirclesProgress();
+    public FoldingCirclesDrawable(int[] colors) {
+        initCirclesProgress(colors);
     }
 
-    private void initCirclesProgress() {
+    private void initCirclesProgress(int[] colors) {
+        initColors(colors);
         mPath = new Path();
 
         Paint basePaint = new Paint();
@@ -87,6 +69,13 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         // init alpha and color filter
         setAlpha(mAlpha);
         setColorFilter(mColorFilter);
+    }
+
+    private void initColors(int[] colors) {
+        mColor1=colors[0];
+        mColor2=colors[1];
+        mColor3=colors[2];
+        mColor4=colors[3];
     }
 
     @Override
@@ -107,18 +96,19 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         mCurrentState = ProgressStates.values()[stateForLevel];
 
         // colors
+        resetColor(mCurrentState);
         int levelForCircle = (int) (animationLevel % MAX_LEVEL_PER_CIRCLE);
 
         boolean halfPassed;
-        if (!mCurrentState.goesBackward) {
+        if (!goesBackward) {
             halfPassed = levelForCircle != (int) (animationLevel % (MAX_LEVEL_PER_CIRCLE / 2));
         } else {
             halfPassed = levelForCircle == (int) (animationLevel % (MAX_LEVEL_PER_CIRCLE / 2));
             levelForCircle = (int) (MAX_LEVEL_PER_CIRCLE - levelForCircle);
         }
 
-        mFstHalfPaint.setColor(mCurrentState.fstColor.color);
-        mScndHalfPaint.setColor(mCurrentState.scndColor.color);
+        mFstHalfPaint.setColor(fstColor);
+        mScndHalfPaint.setColor(scndColor);
 
         if (!halfPassed) {
             mAbovePaint.setColor(mScndHalfPaint.getColor());
@@ -134,6 +124,31 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         mAxisValue = (int) (mControlPointMinimum + (mControlPointMaximum - mControlPointMinimum) * (levelForCircle / MAX_LEVEL_PER_CIRCLE));
 
         return true;
+    }
+
+    private void resetColor(ProgressStates currentState) {
+        switch (currentState){
+            case FOLDING_DOWN:
+                fstColor= mColor1;
+                scndColor=mColor2;
+                goesBackward=false;
+            break;
+            case FOLDING_LEFT:
+                fstColor= mColor1;
+                scndColor=mColor3;
+                goesBackward=true;
+                break;
+            case FOLDING_UP:
+                fstColor= mColor3;
+                scndColor=mColor4;
+                goesBackward=true;
+                break;
+            case FOLDING_RIGHT:
+                fstColor=mColor2;
+                scndColor=mColor4;
+                goesBackward=false;
+                break;
+        }
     }
 
     @Override
@@ -186,10 +201,8 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     @Override
     public void setAlpha(int alpha) {
         this.mAlpha = alpha;
-
         mFstHalfPaint.setAlpha(alpha);
         mScndHalfPaint.setAlpha(alpha);
-
         int targetAboveAlpha = (ALPHA_ABOVE_DEFAULT * alpha) / ALPHA_OPAQUE;
         mAbovePaint.setAlpha(targetAboveAlpha);
     }
@@ -197,7 +210,6 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     @Override
     public void setColorFilter(ColorFilter cf) {
         this.mColorFilter = cf;
-
         mFstHalfPaint.setColorFilter(cf);
         mScndHalfPaint.setColorFilter(cf);
         mAbovePaint.setColorFilter(cf);
@@ -233,6 +245,7 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
     }
 
     public static class Builder {
+        private int[] mColors;
 
         public Builder(Context context){
             initDefaults(context);
@@ -240,10 +253,20 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
 
         private void initDefaults(Context context) {
             //Default values
+            mColors = context.getResources().getIntArray(R.array.google_colors);
+        }
+
+        public Builder colors(int[] colors) {
+            if (colors == null || colors.length == 0) {
+                throw new IllegalArgumentException("Your color array must contains at least 4 values");
+            }
+
+            mColors = colors;
+            return this;
         }
 
         public Drawable build() {
-            return new FoldingCirclesDrawable();
+            return new FoldingCirclesDrawable(mColors);
         }
     }
 }

@@ -11,7 +11,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        gpb:type="folding_circles"/>
+        gpb:type="folding_circles"
+        gpb:colors="@array/rainbow"/>
 
     <!--If we add the google progress dynamically we use a native ProgressBar-->
     <!--<ProgressBar-->
