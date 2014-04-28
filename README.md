@@ -100,7 +100,7 @@ Each type of `GoogleProgressBar` have different attributes:
 **Attributes depending on type:**
 
 * folding_circles
-    * `gpb:colors="@array/colors" (It needs to be an array of 4 colors)
+    * `gpb:colors="@array/colors"` (It needs to be an array of 4 colors)
 
 The animation speed can be modified easily with `android:indeterminateDuration` in the xml either when you add the `ProgressBar` dynamically or from XML.
 
