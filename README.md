@@ -34,6 +34,7 @@ TODO
 Usage
 -----
 
+######Dynamically
 Add to your ProgressBar on the xml layout:
 
 ```xml
@@ -44,9 +45,7 @@ Add to your ProgressBar on the xml layout:
             android:layout_gravity="center"/>
 ```
 
-The animation speed can be modified easily with `android:indeterminateDuration`.
-
-You also need to set in you code the drawable you want to use from the list:
+Set in your code the drawable you want to use from the list:
 
 ```java
     @Override
@@ -54,7 +53,8 @@ You also need to set in you code the drawable you want to use from the list:
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        mProgressBar.setIndeterminateDrawable(new you_list_option());
+        mProgressBar.setIndeterminateDrawable(new you_list_option.Builder(this)
+                    .build());
         //...
     }
 ```
@@ -63,7 +63,46 @@ You also need to set in you code the drawable you want to use from the list:
 
 * FoldingCirclesDrawable
 
-The more custom `Drawables` finished, the more options in this list.
+The more custom `Drawable`s finished, the more options in this list.
+
+**Attributes depending on the drawable:**
+
+* FoldingCirclesDrawable
+
+```java
+    mProgressBar.setIndeterminateDrawable(new you_list_option.Builder(this)
+                                                             .colors(getResources().getIntArray(R.array.colors) //Array of 4 colors
+                                                             .build());
+```
+
+##From XML
+
+When you want to use the `GoogleProgresBar` from XML you need to add the following view to your layout:
+
+```java
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+            android:id="@+id/google_progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            gpb:type="you_list_option"/>
+```
+The attribute `gpb:type` will specify the type of `ProgressBar` to be displayed
+
+`you_list_option` can be replace for:
+
+* folding_circles
+
+The more custom `Drawable`s finished, the more options in this list.
+
+Each type of `GoogleProgressBar` have different attributes:
+
+**Attributes depending on type:**
+
+* folding_circles
+    * `gpb:colors="@array/colors" (It needs to be an array of 4 colors)
+
+The animation speed can be modified easily with `android:indeterminateDuration` in the xml either when you add the `ProgressBar` dynamically or from XML.
 
 Including in your project
 -------------------------
