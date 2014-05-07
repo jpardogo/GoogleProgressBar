@@ -45,7 +45,7 @@ Add a ProgressBar to the xml layout:
             android:layout_gravity="center"/>
 ```
 
-Choose form the list the drawable you want to use and place it in your code:
+Choose from the list of `Drawable`s the one you want to use and place it in your code:
 
 ```java
     @Override
@@ -75,6 +75,7 @@ The more custom `Drawable`s finished, the more options in this list.
                                                              .build());
 ```
 The animation speed can be modified easily with `android:indeterminateDuration` in the xml.
+
 If not colors are define the 4 default google colors (red,blue, yellow and green) will be used.
 
 ######From XML
