@@ -27,7 +27,7 @@ TODO
 
     Galaxy nexus shinny cross boot animation
 
- * [NEXUS_ROATION_CROSS](http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif):
+ * [NEXUS_ROTATION_CROSS](http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif):
 
     Nexus one rotation cross animation (Just the cross rotation)
 
