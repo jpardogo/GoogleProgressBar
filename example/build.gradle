@@ -33,7 +33,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
-    compile 'com.jakewharton:butterknife:4.0.1'
+    compile 'com.jakewharton:butterknife:5.0.1'
     compile project(':library')
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
