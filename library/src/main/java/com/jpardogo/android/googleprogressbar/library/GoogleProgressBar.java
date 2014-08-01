@@ -9,7 +9,8 @@ import android.widget.ProgressBar;
 public class GoogleProgressBar extends ProgressBar {
 
     private enum ProgressType{
-        FOLDING_CIRCLES
+        FOLDING_CIRCLES,
+        GOOGLE_MUSIC_DICES
     }
 
     public GoogleProgressBar(Context context) {
@@ -37,9 +38,13 @@ public class GoogleProgressBar extends ProgressBar {
         ProgressType type = ProgressType.values()[typeIndex];
         switch (type){
             case FOLDING_CIRCLES:
-                FoldingCirclesDrawable.Builder builder = new FoldingCirclesDrawable.Builder(context);
-                builder.colors(getResources().getIntArray(colorsId));
-                drawable = builder.build();
+                drawable = new FoldingCirclesDrawable.Builder(context)
+                        .colors(getResources().getIntArray(colorsId))
+                        .build();
+                break;
+            case GOOGLE_MUSIC_DICES:
+                drawable = new GoogleMusicDicesDrawable.Builder()
+                        .build();
                 break;
         }
 
