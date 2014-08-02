@@ -10,7 +10,8 @@ public class GoogleProgressBar extends ProgressBar {
 
     private enum ProgressType{
         FOLDING_CIRCLES,
-        GOOGLE_MUSIC_DICES
+        GOOGLE_MUSIC_DICES,
+        NEXUS_ROTATION_CROSS
     }
 
     public GoogleProgressBar(Context context) {
@@ -46,6 +47,10 @@ public class GoogleProgressBar extends ProgressBar {
                 drawable = new GoogleMusicDicesDrawable.Builder()
                         .build();
                 break;
+            case NEXUS_ROTATION_CROSS:
+                drawable = new NexusRotationCrossDrawable.Builder(context)
+                        .colors(getResources().getIntArray(colorsId))
+                        .build();
         }
 
         return drawable;
