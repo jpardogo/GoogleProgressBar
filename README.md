@@ -3,21 +3,16 @@ GoogleProgressBar
 
 Android library to display different kind of google related animations for the progressBar.
 
-Only this animation has been finished so far:
-
-![FoldingCirclesProgressBar][1]
-
-  FoldingCirclesProgressBar
+These animations have been finished so far:
+  
+![FoldingCirclesProgressBar][1] ![GoogleMusicDicesDrawable][2] ![NexusRotationCross.gif][3]
 
 TODO
 ----
 
+ * Different colors for the alreayd exiting GoogleMusicDicesDrawable. Either the whole dice or each face as you prefer.
 
- I would love to receive your pull requests to create any of the following animations or others that you think fit on this library:
-
- * [GOOGLE_MUSIC_DICES](https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif)
-
-   Dices I'm feeling lucky progress of google music app.
+I also would love to receive your pull requests to create any of the following animations or others that you think fit on this library:
 
  * [NEXUS_CIRCLES](http://ikslawok.free.fr/my_nexus_fr/nexus_5/bootanimation_nexus_5.gif):
 
@@ -26,10 +21,8 @@ TODO
  * [NEXUS_CROSS](http://devfest.gdgthess.org/wp-content/uploads/2013/11/nexus-4-boot-animation.gif):
 
     Galaxy nexus shinny cross boot animation
-
- * [NEXUS_ROTATION_CROSS](http://deathlyspectator.files.wordpress.com/2012/03/sampleb.gif):
-
-    Nexus one rotation cross animation (Just the cross rotation)
+ 
+ 
 
 Usage
 -----
@@ -62,18 +55,24 @@ Choose from the list of `Drawable`s the one you want to use and place it in your
 `your_list_option` can be replace for:
 
 * FoldingCirclesDrawable
+* GoogleMusicDicesDrawable
+* NexusRotationCrossDrawable
 
 The more custom `Drawable`s finished, the more options in this list.
 
 **Attributes depending on the drawable:**
 
-* FoldingCirclesDrawable
-
+######Color
 ```java
     mProgressBar.setIndeterminateDrawable(new you_list_option.Builder(this)
                                                              .colors(getResources().getIntArray(R.array.colors) //Array of 4 colors
                                                              .build());
 ```
+
+* FoldingCirclesDrawable
+* NexusRotationCrossDrawable
+
+So far `GoogleMusicDicesDrawable` doesn't have color options.
 The animation speed can be modified easily with `android:indeterminateDuration` in the xml.
 
 If not colors are define the 4 default google colors (red,blue, yellow and green) will be used.
@@ -95,18 +94,22 @@ The require attribute `gpb:type` will specify the type of `ProgressBar` to displ
 `your_list_option` can be replace for:
 
 * folding_circles
+* nexus_rotation_cross
+* google_music_dices
 
 The more custom `Drawable`s finished, the more options in this list.
 
 Each type of `GoogleProgressBar` have different attributes:
 
 **Attributes depending on type:**
-
+######Color
 * folding_circles
+* nexus_rotation_cross
     * `gpb:colors="@array/colors"`
         * Optional, If not colors are define the 4 default google colors (red,blue, yellow and green) will be used.
         * It needs to be an array of 4 colors
 
+So far `google_music_dices` doesn't have color options.
 The animation speed can be modified easily with `android:indeterminateDuration` in the xml.
 
 Including in your project
@@ -155,4 +158,5 @@ License
     limitations under the License.
 
 [1]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
-[2]: https://github.com/jpardogo/GoogleProgressBar/blob/master/library/src/main/java/com/jpardogo/android/googleprogressbar/library/GoogleProgressBar.java#L129
+[2]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif
+[3]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/NexusRotationCross.gif
