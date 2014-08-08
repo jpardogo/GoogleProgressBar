@@ -10,7 +10,7 @@ These animations have been finished so far:
 TODO
 ----
 
- * Different colors for the alreayd exiting GoogleMusicDicesDrawable. Either the whole dice or each face as you prefer.
+ * Different colors for the already existing `GoogleMusicDicesDrawable'. Either the whole dice or his faces.
 
 I also would love to receive your pull requests to create any of the following animations or others that you think fit on this library:
 
