@@ -3,22 +3,21 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ListPreference
-        android:key="@string/progressBar_pref_key"
-        android:title="ProgressBar type"
-        android:summary="Add dynamically the selected value"
+        android:defaultValue="@string/progressBar_pref_defValue"
         android:dialogTitle="ProgressBar drawable"
         android:entries="@array/progressDrawables"
         android:entryValues="@array/progressDrawablesValues"
-        android:defaultValue="@string/progressBar_pref_defValue" />
+        android:key="@string/progressBar_pref_key"
+        android:summary="Add dynamically the selected value"
+        android:title="ProgressBar type" />
 
-    <PreferenceCategory android:title="@string/pref_colors_header_title" >
+    <PreferenceCategory android:title="@string/pref_colors_header_title">
         <com.jpardogo.android.googleprogressbar.calendarstock.ColorPickerPreference
             android:defaultValue="@color/red"
             android:key="@string/firstcolor_pref_key"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
-            android:summary="Preference summary"
-            android:title="Preference Title"
+            android:title="First color"
             app:cal_itemLayout="@layout/calendar_grid_item_color"
             app:cal_numColumns="5" />
         <com.jpardogo.android.googleprogressbar.calendarstock.ColorPickerPreference
@@ -26,8 +25,7 @@
             android:key="@string/secondcolor_pref_key"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
-            android:summary="Preference summary"
-            android:title="Preference Title"
+            android:title="Second color"
             app:cal_itemLayout="@layout/calendar_grid_item_color"
             app:cal_numColumns="5" />
         <com.jpardogo.android.googleprogressbar.calendarstock.ColorPickerPreference
@@ -35,8 +33,7 @@
             android:key="@string/thirdcolor_pref_key"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
-            android:summary="Preference summary"
-            android:title="Preference Title"
+            android:title="Third color"
             app:cal_itemLayout="@layout/calendar_grid_item_color"
             app:cal_numColumns="5" />
         <com.jpardogo.android.googleprogressbar.calendarstock.ColorPickerPreference
@@ -44,8 +41,7 @@
             android:key="@string/fourthcolor_pref_key"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
-            android:summary="Preference summary"
-            android:title="Preference Title"
+            android:title="Fourth color"
             app:cal_itemLayout="@layout/calendar_grid_item_color"
             app:cal_numColumns="5" />
     </PreferenceCategory>
