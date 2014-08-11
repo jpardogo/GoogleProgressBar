@@ -17,8 +17,8 @@
     <!--If we add the google progress dynamically we use a native ProgressBar-->
     <ProgressBar
         android:id="@+id/google_progress"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"/>
 
 </FrameLayout>

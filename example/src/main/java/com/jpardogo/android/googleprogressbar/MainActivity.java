@@ -2,6 +2,7 @@ package com.jpardogo.android.googleprogressbar;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
         switch (value) {
             case FOLDING_CIRCLES:
                 progressDrawable = new FoldingCirclesDrawable.Builder(this)
-                        .colors(getResources().getIntArray(R.array.rainbow))
+                        .colors(getProgressDrawableColors())
                         .build();
                 break;
 
@@ -62,12 +63,22 @@ public class MainActivity extends Activity {
 
             case NEXUS_CROSS_ROTATION:
                 progressDrawable = new NexusRotationCrossDrawable.Builder(this)
-                        .colors(getResources().getIntArray(R.array.rainbow))
+                        .colors(getProgressDrawableColors())
                         .build();
                 break;
         }
 
         return progressDrawable;
+    }
+
+    private int[] getProgressDrawableColors() {
+        int[] colors = new int[4];
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        colors[0] = prefs.getInt(getString(R.string.firstcolor_pref_key),getResources().getColor(R.color.red));
+        colors[1] = prefs.getInt(getString(R.string.secondcolor_pref_key),getResources().getColor(R.color.blue));
+        colors[2] = prefs.getInt(getString(R.string.thirdcolor_pref_key),getResources().getColor(R.color.yellow));
+        colors[3] = prefs.getInt(getString(R.string.fourthcolor_pref_key), getResources().getColor(R.color.green));
+        return colors;
     }
 
     @Override
