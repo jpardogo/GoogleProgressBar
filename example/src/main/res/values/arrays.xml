@@ -7,4 +7,16 @@
         <item>@color/darkgreen</item>
         <item>@color/darkorange</item>
     </integer-array>
+
+    <string-array name="progressDrawables">
+        <item>Google Circles</item>
+        <item>Google Music Dices</item>
+        <item>Nexus Rotation cross</item>
+    </string-array>
+
+    <string-array name="progressDrawablesValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

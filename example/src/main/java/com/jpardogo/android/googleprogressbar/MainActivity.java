@@ -1,85 +1,88 @@
 package com.jpardogo.android.googleprogressbar;
 
-import android.app.ListActivity;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 
-import com.jpardogo.android.googleprogressbar.library.GoogleProgressBar;
-
-import java.util.ArrayList;
+import com.jpardogo.android.googleprogressbar.library.FoldingCirclesDrawable;
+import com.jpardogo.android.googleprogressbar.library.GoogleMusicDicesDrawable;
+import com.jpardogo.android.googleprogressbar.library.NexusRotationCrossDrawable;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends Activity {
 
-    private static final long REFRESH_TIME = 4000;
-    private int LIST_ITEM_COUNT=40;
+    private final int FOLDING_CIRCLES = 0;
+    private final int MUSIC_DICES = 1;
+    private final int NEXUS_CROSS_ROTATION = 2;
+    /**
+     * Dynamically
+     */
     @InjectView(R.id.google_progress)
-    GoogleProgressBar mProgressBar;
-    private boolean isRefreshing=false;
-    /**Dynamically*/
-//    @InjectView(R.id.google_progress)
-//    ProgressBar mProgressBar;
+    ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         /**Dynamically*/
-//        mProgressBar.setIndeterminateDrawable(new FoldingCirclesDrawable.Builder(this)
-//                .colors(getResources().getIntArray(R.array.rainbow))
-//                .build());
-        refresh();
-
+        Rect bounds = mProgressBar.getIndeterminateDrawable().getBounds();
+        mProgressBar.setIndeterminateDrawable(getProgressDrawable());
+        mProgressBar.getIndeterminateDrawable().setBounds(bounds);
     }
 
-    private void refresh() {
-        isRefreshing=true;
-        getListView().setVisibility(View.GONE);
-        mProgressBar.setVisibility(View.VISIBLE);
-        getListView().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                isRefreshing =false;
-                getListView().setVisibility(View.VISIBLE);
-                mProgressBar.setVisibility(View.GONE);
-                setListAdapter(new ArrayAdapter<String>(getBaseContext(), R.layout.item_list, getListItem()));
+    private Drawable getProgressDrawable() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int value = Integer.parseInt(prefs.getString(getString(R.string.progressBar_pref_key), getString(R.string.progressBar_pref_defValue)));
+        Drawable progressDrawable = null;
+        switch (value) {
+            case FOLDING_CIRCLES:
+                progressDrawable = new FoldingCirclesDrawable.Builder(this)
+                        .colors(getResources().getIntArray(R.array.rainbow))
+                        .build();
+                break;
 
-            }
-        },REFRESH_TIME);
-    }
+            case MUSIC_DICES:
+                progressDrawable = new GoogleMusicDicesDrawable.Builder().build();
+                break;
 
-    private ArrayList<String> getListItem() {
-        ArrayList<String> list = new ArrayList<String>();
-        for(int i=0;i<LIST_ITEM_COUNT;i++){
-            list.add("Position: "+i);
+            case NEXUS_CROSS_ROTATION:
+                progressDrawable = new NexusRotationCrossDrawable.Builder(this)
+                        .colors(getResources().getIntArray(R.array.rainbow))
+                        .build();
+                break;
         }
-        return list;
-    }
 
+        return progressDrawable;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_refresh) {
-            if(!isRefreshing)refresh();
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                startActivity(SettingsActivity.newInstance(this));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

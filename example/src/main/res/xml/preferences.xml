@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="@string/progressBar_pref_key"
+        android:title="ProgressBar type"
+        android:summary="Add dynamically the selected value"
+        android:dialogTitle="ProgressBar drawable"
+        android:entries="@array/progressDrawables"
+        android:entryValues="@array/progressDrawablesValues"
+        android:defaultValue="@string/progressBar_pref_defValue" />
+</PreferenceScreen>
