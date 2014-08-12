@@ -3,9 +3,13 @@ GoogleProgressBar
 
 Android library to display different kind of google related animations for the progressBar.
 
+The [demo app][1] can be found in the play store. 
+
+![playstore][2]
+
 These animations have been finished so far:
   
-![FoldingCirclesProgressBar][1] ![GoogleMusicDicesDrawable][2] ![NexusRotationCross.gif][3]
+![FoldingCirclesProgressBar][3] ![GoogleMusicDicesDrawable][4] ![NexusRotationCross.gif][5]
 
 TODO
 ----
@@ -157,6 +161,8 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[1]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
-[2]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif
-[3]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/NexusRotationCross.gif
+[1]: https://play.google.com/store/apps/details?id=com.jpardogo.android.googleprogressbar
+[2]: https://raw.github.com/jpardogo/ListBuddies/master/art/google_play%20badge.png
+[3]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
+[4]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif
+[5]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/NexusRotationCross.gif
