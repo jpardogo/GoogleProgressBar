@@ -131,7 +131,7 @@ dependencies {
 
 Proguard
 --------
-In order to use this library with proguard you need to add this line to your `proguard.fcg`:
+In order to use this library with proguard you need to add this line to your `proguard.cfg`:
 
 ```grovy
 -keep class com.jpardogo.android.googleprogressbar.** { *; }
