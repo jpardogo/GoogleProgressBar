@@ -24,6 +24,12 @@ public class GoogleProgressBar extends ProgressBar {
 
     public GoogleProgressBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+
+        // Due to some new ADT features, initialing with values from resource file may meet preview problems.
+        // If View.isInEditMode() returns true, skip drawing.
+        if (isInEditMode())
+            return;
+
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.GoogleProgressBar, defStyle, 0);
         final int typeIndex = a.getInteger(R.styleable.GoogleProgressBar_type, context.getResources().getInteger(R.integer.default_type));
         final int colorsId = a.getResourceId(R.styleable.GoogleProgressBar_colors, R.array.google_colors);
