@@ -9,7 +9,7 @@ The [demo app][1] can be found in the play store.
 
 These animations have been finished so far:
   
-![FoldingCirclesProgressBar][3] ![GoogleMusicDicesDrawable][4] ![NexusRotationCross.gif][5]
+![FoldingCirclesProgressBar][3] ![GoogleMusicDicesDrawable][4] ![NexusRotationCross.gif][5] ![NexusRotationCross.gif][11]
 
 TODO
 ----
@@ -61,6 +61,7 @@ Choose from the list of `Drawable`s the one you want to use and place it in your
 * FoldingCirclesDrawable
 * GoogleMusicDicesDrawable
 * NexusRotationCrossDrawable
+* ChromeFloatingCircles
 
 The more custom `Drawable`s finished, the more options in this list.
 
@@ -75,6 +76,7 @@ The more custom `Drawable`s finished, the more options in this list.
 
 * FoldingCirclesDrawable
 * NexusRotationCrossDrawable
+* ChromeFloatingCirclesDrawable
 
 So far `GoogleMusicDicesDrawable` doesn't have color options.
 The animation speed can be modified easily with `android:indeterminateDuration` in the xml.
@@ -100,6 +102,7 @@ The require attribute `gpb:type` will specify the type of `ProgressBar` to displ
 * folding_circles
 * nexus_rotation_cross
 * google_music_dices
+* chrome_floating_circles
 
 The more custom `Drawable`s finished, the more options in this list.
 
@@ -185,4 +188,5 @@ License
 [7]: https://github.com/gabrielemariotti/colorpickercollection
 [8]: https://github.com/RomainPiel
 [9]: https://github.com/makovkastar
-[10]:https://github.com/eveliotc 
+[10]:https://github.com/eveliotc
+[11]: https://raw.githubusercontent.com/MewX/google-progress-bar/master/art/ChromeFloatingCircles.gif 
