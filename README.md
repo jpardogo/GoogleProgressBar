@@ -188,5 +188,5 @@ License
 [7]: https://github.com/gabrielemariotti/colorpickercollection
 [8]: https://github.com/RomainPiel
 [9]: https://github.com/makovkastar
-[10]:https://github.com/eveliotc
-[11]: https://raw.githubusercontent.com/MewX/google-progress-bar/master/art/ChromeFloatingCircles.gif 
+[10]: https://github.com/eveliotc
+[11]: https://raw.githubusercontent.com/MewX/google-progress-bar/gpb-chrome/art/ChromeFloatingCircles.gif 
