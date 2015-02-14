@@ -4,14 +4,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 public class GoogleProgressBar extends ProgressBar {
 
-    private enum ProgressType{
+    private enum ProgressType {
         FOLDING_CIRCLES,
         GOOGLE_MUSIC_DICES,
-        NEXUS_ROTATION_CROSS
+        NEXUS_ROTATION_CROSS,
+        CHROME_FLOATING_CIRCLES
     }
 
     public GoogleProgressBar(Context context) {
@@ -49,14 +51,23 @@ public class GoogleProgressBar extends ProgressBar {
                         .colors(getResources().getIntArray(colorsId))
                         .build();
                 break;
+
             case GOOGLE_MUSIC_DICES:
                 drawable = new GoogleMusicDicesDrawable.Builder()
                         .build();
                 break;
+
             case NEXUS_ROTATION_CROSS:
                 drawable = new NexusRotationCrossDrawable.Builder(context)
                         .colors(getResources().getIntArray(colorsId))
                         .build();
+                break;
+
+            case CHROME_FLOATING_CIRCLES:
+                drawable = new ChromeFloatingCirclesDrawable.Builder(context)
+                        .colors(getResources().getIntArray(colorsId))
+                        .build();
+                break;
         }
 
         return drawable;
