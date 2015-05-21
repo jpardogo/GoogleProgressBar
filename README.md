@@ -137,6 +137,10 @@ In order to use this library with proguard you need to add this line to your `pr
 -keep class com.jpardogo.android.googleprogressbar.** { *; }
 ````
 
+How to contribute?
+------------------
+- Pull request to dev branch NO master.
+
 Acknowledgements
 ----------------
 * Thanks to [RomainPiel][8],[Melnykov Oleksandr][9] and [Evelio Tarazona Cáceres][10] for his collaboration.
