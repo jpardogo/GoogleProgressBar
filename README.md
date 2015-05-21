@@ -129,6 +129,19 @@ dependencies {
 }
 ```
 
+Proguard
+--------
+In order to use this library with proguard you need to add this line to your `proguard.cfg`:
+
+```grovy
+-keep class com.jpardogo.android.googleprogressbar.** { *; }
+````
+
+Acknowledgements
+----------------
+* Thanks to [RomainPiel][8],[Melnykov Oleksandr][9] and [Evelio Tarazona Cáceres][10] for his collaboration.
+* Thanks to [Gabriele Mariotti][6] for his [colorpickercollection repo][7] that help me to create the example app.
+
 Developed By
 ------------
 
@@ -168,3 +181,8 @@ License
 [3]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/GoogleProgressBar.gif
 [4]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/dev/art/GoogleDices.gif
 [5]: https://raw.githubusercontent.com/jpardogo/GoogleProgressBar/master/art/NexusRotationCross.gif
+[6]: https://github.com/gabrielemariotti
+[7]: https://github.com/gabrielemariotti/colorpickercollection
+[8]: https://github.com/RomainPiel
+[9]: https://github.com/makovkastar
+[10]:https://github.com/eveliotc 
