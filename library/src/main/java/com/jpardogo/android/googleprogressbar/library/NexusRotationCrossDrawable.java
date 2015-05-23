@@ -3,7 +3,6 @@ package com.jpardogo.android.googleprogressbar.library;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
@@ -56,14 +55,6 @@ public class NexusRotationCrossDrawable extends Drawable implements Drawable.Cal
         final ObjectAnimator objectAnimator = ObjectAnimator.ofInt(this, "rotationAngle", 0, 180);
         objectAnimator.setInterpolator(LINEAR_INTERPOLATOR);
         objectAnimator.setDuration(ANIMATION_DURATION);
-
-        objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int v = (Integer)animation.getAnimatedValue();
-            }
-        });
-
         objectAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
