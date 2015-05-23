@@ -1,21 +1,13 @@
 package com.jpardogo.android.googleprogressbar.library;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
 
 /**
  * ChromeFloatingCirclesDrawable
@@ -65,7 +57,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
 
     public ChromeFloatingCirclesDrawable(int[] colors) {
         initCirclesProgress(colors);
-        return;
     }
 
     private void initCirclesProgress(int[] colors) {
@@ -82,8 +73,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
 
         // init colorSign
         colorSign = 1; // |= 1, |= 2, |= 4, |= 8 --> 0xF
-
-        return;
     }
 
     private void initColors(int[] colors) {
@@ -106,37 +95,31 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         mPaint4 = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint4.setColor(colors[3]);
         mPaint4.setAntiAlias(true);
-
-        return;
     }
 
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
         measureCircleProgress(bounds.width(), bounds.height());
-
-        return;
     }
 
     @Override
     protected boolean onLevelChange(int level) {
-
         // calc one offset data is enough
         // 0.5 * a * t^2 / mCenterPoint.x = level / sideLevel
         // t from 0 to 10,000, so divided into 4 parts.
         // the ACCELERATION_LEVEL defines how many divisions in 10000 levels
         level %= MAX_LEVEL / acceleration;
 
-        final int temp_level = level % ( MID_LEVEL / acceleration );
+        final int temp_level = level % (MID_LEVEL / acceleration);
         final int ef_width = (int)(unit * 3.0); // effective width
-        if( level < CENT_LEVEL / acceleration ) { // go
-            if( level < MID_LEVEL / acceleration ) {
+        if(level < CENT_LEVEL / acceleration) { // go
+            if(level < MID_LEVEL / acceleration) {
                 // set colorSign
-                if( colorSign == 0xF ) {
-                    changeTopColor( );
+                if(colorSign == 0xF) {
+                    changeTopColor();
                     colorSign = 1;
                 }
-
                 // from beg to mid
                 offsetPercentage = 0.5 * acceleration * temp_level * temp_level / distance;
                 offset = (int)(offsetPercentage * ef_width / 2); // x and y direction offset
@@ -144,22 +127,20 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
             else {
                 // set colorSign
                 colorSign |= 2;
-
                 // from mid to end
-                offsetPercentage = ( max_speed * temp_level
-                        - 0.5 * acceleration * temp_level * temp_level ) / distance
+                offsetPercentage = (max_speed * temp_level
+                        - 0.5 * acceleration * temp_level * temp_level) / distance
                         + 1.0;
                 offset = (int)(offsetPercentage * ef_width / 2); // x and y direction offset
             }
         }
         else { // back
-            if( level < ( CENT_LEVEL + MID_LEVEL ) / acceleration ) {
+            if(level < (CENT_LEVEL + MID_LEVEL) / acceleration) {
                 // set colorSign
-                if( colorSign == 0x3 ) {
-                    changeTopColor( );
+                if(colorSign == 0x3) {
+                    changeTopColor();
                     colorSign |= 4;
                 }
-
                 // from end to mid
                 offsetPercentage = 0.5 * acceleration * temp_level * temp_level  / distance;
                 offset = (int)(ef_width - offsetPercentage * ef_width / 2); // x and y direction offset
@@ -167,15 +148,12 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
             else {
                 // set colorSign
                 colorSign |= 8;
-
                 // from mid to beg
-                offsetPercentage = ( max_speed * temp_level
-                        - 0.5 * acceleration * temp_level * temp_level ) / distance
+                offsetPercentage = (max_speed * temp_level
+                        - 0.5 * acceleration * temp_level * temp_level) / distance
                         + 1.0;
                 offsetPercentage = offsetPercentage == 1.0 ? 2.0 : offsetPercentage;
                 offset = (int)(ef_width - offsetPercentage * ef_width / 2); // x and y direction offset
-
-
             }
         }
 
@@ -187,7 +165,7 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         return true;
     }
 
-    private void changeTopColor( ) {
+    private void changeTopColor() {
         switch(currentProgressStates){
             case GREEN_TOP:
                 currentProgressStates = ProgressStates.YELLOW_TOP;
@@ -202,21 +180,18 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
                 currentProgressStates = ProgressStates.GREEN_TOP;
                 break;
         }
-
-        return;
     }
 
     @Override
     public void draw(Canvas canvas) {
-
         // draw circles
-        if( currentProgressStates != ProgressStates.RED_TOP )
+        if(currentProgressStates != ProgressStates.RED_TOP)
             canvas.drawCircle(mArrowPoints[0].x, mArrowPoints[0].y, (float)unit, mPaint1);
-        if( currentProgressStates != ProgressStates.BLUE_TOP )
+        if(currentProgressStates != ProgressStates.BLUE_TOP)
             canvas.drawCircle(mArrowPoints[1].x, mArrowPoints[1].y, (float)unit, mPaint2);
-        if( currentProgressStates != ProgressStates.YELLOW_TOP )
+        if(currentProgressStates != ProgressStates.YELLOW_TOP)
             canvas.drawCircle(mArrowPoints[2].x, mArrowPoints[2].y, (float)unit, mPaint3);
-        if( currentProgressStates != ProgressStates.GREEN_TOP )
+        if(currentProgressStates != ProgressStates.GREEN_TOP)
             canvas.drawCircle(mArrowPoints[3].x, mArrowPoints[3].y, (float)unit, mPaint4);
 
         // draw the top one
@@ -234,16 +209,14 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
                 canvas.drawCircle(mArrowPoints[1].x, mArrowPoints[1].y, (float)unit, mPaint2);
                 break;
         }
-
-        return;
     }
 
     private void measureCircleProgress(int width, int height) {
         // get min edge as width
-        if( width > height ) {
+        if(width > height) {
             // use height
             this.width = height - 1; // minus 1 to avoid "3/2=1"
-            x_beg = ( width - height ) / 2 + 1;
+            x_beg = (width - height) / 2 + 1;
             y_beg = 1;
             x_end = x_beg + this.width;
             y_end = this.width;
@@ -252,7 +225,7 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
             //use width
             this.width = width - 1;
             x_beg = 1;
-            y_beg = ( height - width ) / 2 + 1;
+            y_beg = (height - width) / 2 + 1;
             x_end = this.width;
             y_end = y_beg + this.width;
         }
@@ -264,16 +237,12 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         mArrowPoints[1] = new Point((int)(unit*4.0)+x_beg, (int)(unit*4.0)+y_beg); // mPaint2, right down
         mArrowPoints[2] = new Point((int)unit+x_beg, (int)(unit*4.0)+y_beg); // mPaint3, left down
         mArrowPoints[3] = new Point((int)(unit*4.0)+x_beg, (int)unit+y_beg); // mPaint4, right up
-
-        return;
     }
 
-    public void setAcceleration( int acceleration ) {
+    public void setAcceleration(int acceleration) {
         this.acceleration = acceleration;
-        distance = 0.5 * acceleration * ( MID_LEVEL / acceleration ) * ( MID_LEVEL / acceleration );
-        max_speed = acceleration * ( MID_LEVEL / acceleration );
-
-        return;
+        distance = 0.5 * acceleration * (MID_LEVEL / acceleration) * (MID_LEVEL / acceleration);
+        max_speed = acceleration * (MID_LEVEL / acceleration);
     }
 
     @Override
@@ -282,7 +251,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         mPaint2.setAlpha(alpha);
         mPaint3.setAlpha(alpha);
         mPaint4.setAlpha(alpha);
-        return;
     }
 
     @Override
@@ -292,7 +260,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         mPaint2.setColorFilter(cf);
         mPaint3.setColorFilter(cf);
         mPaint4.setColorFilter(cf);
-        return;
     }
 
     @Override
@@ -306,7 +273,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         if (callback != null) {
             callback.invalidateDrawable(this);
         }
-        return;
     }
 
     @Override
@@ -315,7 +281,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         if (callback != null) {
             callback.scheduleDrawable(this, what, when);
         }
-        return;
     }
 
     @Override
@@ -324,7 +289,6 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
         if (callback != null) {
             callback.unscheduleDrawable(this, what);
         }
-        return;
     }
 
     public static class Builder {

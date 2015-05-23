@@ -7,18 +7,18 @@
     tools:context="com.jpardogo.android.googleprogressbar.MainActivity">
 
     <!--If we add the google progress in xml this ProgressBar with the progress type-->
-    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
-        android:id="@+id/google_progress"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        gpb:type="chrome_floating_circles"/>
+    <!--<com.jpardogo.android.googleprogressbar.library.GoogleProgressBar-->
+        <!--android:id="@+id/google_progress"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--gpb:type="chrome_floating_circles"/>-->
 
     <!--If we add the google progress dynamically we use a native ProgressBar-->
-    <!--<ProgressBar-->
-        <!--android:id="@+id/google_progress"-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:layout_gravity="center"/>-->
+    <ProgressBar
+        android:id="@+id/google_progress"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
 
 </FrameLayout>
