@@ -188,6 +188,9 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         mPath.reset();
         mPath.moveTo(mHalf, 0);
         mPath.cubicTo(mAxisValue, 0, mAxisValue, mDiameter, mHalf, mDiameter);
+        // draw again to add its thickness, to avoid visual problem
+        mPath.moveTo(mHalf+1, 0);
+        mPath.cubicTo(mAxisValue, 0, mAxisValue, mDiameter, mHalf+1, mDiameter);
     }
 
     private void drawYMotion(Canvas canvas) {
@@ -196,6 +199,9 @@ public class FoldingCirclesDrawable extends Drawable implements Drawable.Callbac
         mPath.reset();
         mPath.moveTo(0, mHalf);
         mPath.cubicTo(0, mAxisValue, mDiameter, mAxisValue, mDiameter, mHalf);
+        // draw again to add its thickness, to avoid visual problem
+        mPath.moveTo(0, mHalf+1);
+        mPath.cubicTo(0, mAxisValue, mDiameter, mAxisValue, mDiameter, mHalf+1);
     }
 
     @Override

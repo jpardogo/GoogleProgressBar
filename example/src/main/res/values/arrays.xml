@@ -11,13 +11,15 @@
     <string-array name="progressDrawables">
         <item>Google Circles</item>
         <item>Google Music Dices</item>
-        <item>Nexus Rotation cross</item>
+        <item>Nexus Rotation Cross</item>
+        <item>Chrome Floating Circles</item>
     </string-array>
 
     <string-array name="progressDrawablesValues">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="default_color_choice_values" translatable="false">
