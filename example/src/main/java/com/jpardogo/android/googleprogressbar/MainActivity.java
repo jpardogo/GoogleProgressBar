@@ -1,16 +1,16 @@
 package com.jpardogo.android.googleprogressbar;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 
+import com.jpardogo.android.googleprogressbar.library.ChromeFloatingCirclesDrawable;
 import com.jpardogo.android.googleprogressbar.library.FoldingCirclesDrawable;
 import com.jpardogo.android.googleprogressbar.library.GoogleMusicDicesDrawable;
 import com.jpardogo.android.googleprogressbar.library.NexusRotationCrossDrawable;
@@ -19,11 +19,13 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
-    private final int FOLDING_CIRCLES = 0;
-    private final int MUSIC_DICES = 1;
-    private final int NEXUS_CROSS_ROTATION = 2;
+    private static final int FOLDING_CIRCLES = 0;
+    private static final int MUSIC_DICES = 1;
+    private static final int NEXUS_CROSS_ROTATION = 2;
+    private static final int CHROME_FLOATING_CIRCLES = 3;
+
     /**
      * Dynamically
      */
@@ -63,6 +65,12 @@ public class MainActivity extends Activity {
 
             case NEXUS_CROSS_ROTATION:
                 progressDrawable = new NexusRotationCrossDrawable.Builder(this)
+                        .colors(getProgressDrawableColors())
+                        .build();
+                break;
+
+            case CHROME_FLOATING_CIRCLES:
+                progressDrawable = new ChromeFloatingCirclesDrawable.Builder(this)
                         .colors(getProgressDrawableColors())
                         .build();
                 break;
