@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.2.0 *(02-06-2015)*
+----------------------------
+- Bug fixes
+- ChromeFloatingCirclesDrawable
+
 Version 1.1.0 *(08-08-2014)*
 ----------------------------
 - GoogleMusicDicesDrawable
