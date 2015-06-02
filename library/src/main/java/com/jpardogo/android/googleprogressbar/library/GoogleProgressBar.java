@@ -8,10 +8,11 @@ import android.widget.ProgressBar;
 
 public class GoogleProgressBar extends ProgressBar {
 
-    private enum ProgressType{
+    private enum ProgressType {
         FOLDING_CIRCLES,
         GOOGLE_MUSIC_DICES,
-        NEXUS_ROTATION_CROSS
+        NEXUS_ROTATION_CROSS,
+        CHROME_FLOATING_CIRCLES
     }
 
     public GoogleProgressBar(Context context) {
@@ -57,6 +58,12 @@ public class GoogleProgressBar extends ProgressBar {
                 drawable = new NexusRotationCrossDrawable.Builder(context)
                         .colors(getResources().getIntArray(colorsId))
                         .build();
+                break;
+            case CHROME_FLOATING_CIRCLES:
+                drawable = new ChromeFloatingCirclesDrawable.Builder(context)
+                        .colors(getResources().getIntArray(colorsId))
+                        .build();
+                break;
         }
 
         return drawable;
