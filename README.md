@@ -146,7 +146,7 @@ How to contribute?
 
 Acknowledgements
 ----------------
-* Thanks to [RomainPiel][8],[Melnykov Oleksandr][9] and [Evelio Tarazona Cáceres][10] for his collaboration.
+* Thanks to [RomainPiel][8],[Melnykov Oleksandr][9], [Evelio Tarazona Cáceres][10] and [MewX][12] for his collaboration.
 * Thanks to [Gabriele Mariotti][6] for his [colorpickercollection repo][7] that help me to create the example app.
 
 Developed By
@@ -193,4 +193,5 @@ License
 [8]: https://github.com/RomainPiel
 [9]: https://github.com/makovkastar
 [10]: https://github.com/eveliotc
-[11]: https://raw.githubusercontent.com/MewX/google-progress-bar/gpb-chrome/art/ChromeFloatingCircles.gif 
+[11]: https://raw.githubusercontent.com/MewX/google-progress-bar/gpb-chrome/art/ChromeFloatingCircles.gif
+[12]: https://github.com/MewX
