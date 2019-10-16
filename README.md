@@ -1,11 +1,9 @@
-GoogleProgressBar
-===============
+GoogleProgressBar 
+=================
+
+This library is not maintain anymore.
 
 Android library to display different kind of google related animations for the progressBar.
-
-The [demo app][1] can be found in the play store. 
-
-[![playstore][2]][1]
 
 These animations have been finished so far:
   
