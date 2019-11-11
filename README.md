@@ -126,7 +126,7 @@ You can either add the library to your application as a library project or add t
 
 ```groovy
 dependencies {
-    compile 'com.jpardogo.googleprogressbar:library:(latest version)'
+    implementation 'com.jpardogo.googleprogressbar:library:(latest version)'
 }
 ```
 
